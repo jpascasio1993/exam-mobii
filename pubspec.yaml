@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   injectable: 1.5.4
   retrofit: 4.0.1
   dio: 5.0.2
