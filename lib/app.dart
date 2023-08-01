@@ -18,7 +18,13 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   final Key key = const Key('lifecycleHandler');
-  AppRouter? appRouter;
+  late AppRouter appRouter;
+
+  @override
+  void initState() {
+    super.initState();
+    appRouter = AppRouter();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +40,7 @@ class _AppState extends State<App> {
             child: child!);
       },
       key: routerKey,
-      routerConfig: appRouter!.router,
+      routerConfig: appRouter.router,
       theme: widget.themeData,
       localizationsDelegates: const [
         AppLocalization.delegate,
