@@ -20,20 +20,13 @@ class UserStore extends BaseStore<UserStoreState> with ContextualLogger {
 
     log.d('getUsers()');
 
-    try {
-      final resultData = await _repository.getUsers();
-      resultData.when(success: (data) {
-        state = state.copyWith(users: data);
-      }, error: (message, exception, stackTrace) {
-        state = state.copyWith(exception: exception, errorMessage: message);
-      });
-      return state.users;
-    } on Exception catch(e, s) {
-      state = state.copyWith(errorMessage: e.toString(), exception: e);
-      return state.users;
-    } finally {
-      state = state.copyWith(isLoading: false);
-      notifyListeners();
-    }
+    final resultData = await _repository.getUsers();
+    resultData.when(success: (data) {
+      state = state.copyWith(users: data, isLoading: false);
+    }, error: (message, exception, stackTrace) {
+      state = state.copyWith(exception: exception, errorMessage: message, isLoading: false);
+    });
+    notifyListeners();
+    return state.users;
   }
 }
