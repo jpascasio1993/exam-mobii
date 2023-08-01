@@ -13,16 +13,14 @@ class UserList extends AbstractStatelessWidget with UserStoreMixin, Localization
   UserList({super.key});
 
   void _retry() {
-
+    super.userStore.getUsers();
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
 
-    final state = context
-        .watch<UserStore>()
-        .state;
+    final state = context.watch<UserStore>().state;
 
     if (state.isLoading) {
       return const Center(
@@ -31,19 +29,21 @@ class UserList extends AbstractStatelessWidget with UserStoreMixin, Localization
     }
 
     if (state.exception != null) {
-      return MessageDisplay(
-          localization.retry, _retry, title: localization.errorMessage, message: localization.errorSubMessage, icon: Icons.error_outline);
+      return MessageDisplay(localization.retry, _retry,
+          title: localization.errorMessage, message: localization.errorSubMessage, icon: Icons.error_outline);
     }
 
     if (state.users.isEmpty) {
       return MessageDisplay(localization.retry, _retry, title: localization.emptyMessage, message: localization.errorSubMessage, icon: Icons.group);
     }
 
-    return ListView.builder(
-        itemCount: state.users.length,
-        itemBuilder: (context, index) {
-          final user = super.userStore.state.users[index];
-          return UserListItem(user: user);
-        });
+    return RefreshIndicator(
+        child: ListView.builder(
+            itemCount: state.users.length,
+            itemBuilder: (context, index) {
+              final user = super.userStore.state.users[index];
+              return UserListItem(user: user);
+            }),
+        onRefresh: () async => _retry());
   }
 }
