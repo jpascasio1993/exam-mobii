@@ -1,7 +1,5 @@
 // ignore_for_file: must_be_immutable
 
-import 'dart:ffi';
-
 import 'package:exam_mobii/core/mixins/stateless/localization_mixin/localization_mixin.dart';
 import 'package:exam_mobii/core/mixins/stateless/user_store_mixin/user_store_mixin.dart';
 import 'package:exam_mobii/core/widget/abstract_stateless_widget/abstract_stateless_widget.dart';

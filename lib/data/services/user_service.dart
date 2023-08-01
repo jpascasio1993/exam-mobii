@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart' hide Headers;
-import 'package:exam_mobii/data/domain/user/user.dart';
 import 'package:retrofit/http.dart';
 import 'package:retrofit/dio.dart';
 
