@@ -17,7 +17,6 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  final Key key = const Key('lifecycleHandler');
   late AppRouter appRouter;
 
   @override

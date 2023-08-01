@@ -2,10 +2,6 @@ import 'package:dio/dio.dart';
 
 class CustomInterceptor extends QueuedInterceptor {
   @override
-  void onResponse(Response response, ResponseInterceptorHandler handler) {
-    super.onResponse(response, handler);
-  }
-  @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
     final message = err.response != null && err.response!.statusCode != null ? switch(err.response!.statusCode) {
       400 => 'Bad Request',
