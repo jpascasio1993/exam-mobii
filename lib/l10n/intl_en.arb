@@ -25,5 +25,21 @@
     "@retry": {
          "type": "text",
          "placeholders": {}
+     },
+     "id": "ID",
+     "@id": {
+        "type": "text",
+        "placeholders": {}
+     },
+     "name": "Name",
+     "@name": {
+        "type": "text",
+        "placeholders": {}
+     },
+     "imageUrl": "Image Url",
+     "@imageUrl": {
+        "type": "text",
+        "placeholders": {}
      }
+
 }

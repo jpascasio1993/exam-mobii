@@ -31,6 +31,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Something\'s not quite working."),
         "errorSubMessage":
             MessageLookupByLibrary.simpleMessage("Try to refresh."),
+        "id": MessageLookupByLibrary.simpleMessage("ID"),
+        "imageUrl": MessageLookupByLibrary.simpleMessage("Image Url"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "retry": MessageLookupByLibrary.simpleMessage("Retry")
       };
 }

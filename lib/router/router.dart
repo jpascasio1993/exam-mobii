@@ -1,5 +1,7 @@
 import 'package:exam_mobii/core/global/global_keys.dart';
 import 'package:exam_mobii/router/home_route/home_route.dart' as home;
+import 'package:exam_mobii/router/details_route/details_route.dart' as details;
+
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,7 +11,13 @@ typedef Builder = Widget Function(BuildContext context);
 
 class AppRouter {
   AppRouter();
-  late final router = GoRouter(routes: [...home.$appRoutes], navigatorKey: rootNavigatorKey, initialLocation: '/');
+
+  late final router = GoRouter(
+    routes: [...home.$appRoutes, ...details.$appRoutes],
+    navigatorKey: rootNavigatorKey,
+    initialLocation: '/',
+    debugLogDiagnostics: true,
+  );
 }
 
 class ScreenRoute {
