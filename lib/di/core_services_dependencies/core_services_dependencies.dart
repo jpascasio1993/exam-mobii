@@ -7,5 +7,9 @@ import 'package:injectable/injectable.dart';
 abstract class CoreServicesDependencies implements ICoreServicesDependencies {
   @lazySingleton
   @override
-  UserService userService({required Dio dio}) => UserService(dio);
+  IUserService userService({required UserServiceAPI userServiceAPI}) => UserService(userServiceAPI: userServiceAPI);
+
+  @lazySingleton
+  @override
+  UserServiceAPI userServiceAPI({required Dio dio}) => UserServiceAPI(dio);
 }

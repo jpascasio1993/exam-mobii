@@ -8,5 +8,5 @@ import 'package:injectable/injectable.dart';
 abstract class CoreRepositoriesDependencies implements ICoreRepositoriesDependencies {
   @lazySingleton
   @override
-  IUserRepository userRepository({required UserService userService}) => UserRepository(userService: userService);
+  IUserRepository userRepository({required IUserService userService}) => UserRepository(userService: userService);
 }

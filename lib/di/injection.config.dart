@@ -44,10 +44,12 @@ _i1.GetIt $initGetIt(
         options: get<_i3.BaseOptions>(),
         dioInterceptors: get<List<_i3.Interceptor>>(),
       ));
-  gh.lazySingleton<_i4.UserService>(
-      () => coreServicesDependencies.userService(dio: get<_i3.Dio>()));
+  gh.lazySingleton<_i4.UserServiceAPI>(
+      () => coreServicesDependencies.userServiceAPI(dio: get<_i3.Dio>()));
+  gh.lazySingleton<_i4.IUserService>(() => coreServicesDependencies.userService(
+      userServiceAPI: get<_i4.UserServiceAPI>()));
   gh.lazySingleton<_i5.IUserRepository>(() => coreRepositoriesDependencies
-      .userRepository(userService: get<_i4.UserService>()));
+      .userRepository(userService: get<_i4.IUserService>()));
   gh.factory<_i6.UserStore>(() =>
       coreStoreDependencies.userStore(repository: get<_i5.IUserRepository>()));
   return get;

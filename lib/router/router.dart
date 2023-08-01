@@ -21,10 +21,9 @@ class AppRouter {
 }
 
 class ScreenRoute {
-  WrapperBuilder? wrapperBuilder;
   Builder builder;
 
-  ScreenRoute({required this.builder, this.wrapperBuilder});
+  ScreenRoute({required this.builder});
 }
 
 abstract class BaseRoute<T> extends GoRouteData {
@@ -34,7 +33,7 @@ abstract class BaseRoute<T> extends GoRouteData {
   Page<T> buildPage(BuildContext context, GoRouterState state) {
     final child = screen(context, state);
 
-    Widget pageContent = child.wrapperBuilder != null ? child.wrapperBuilder!(context, child.builder(context)) : child.builder(context);
+    Widget pageContent = child.builder(context);
 
     return CupertinoPage<T>(child: pageContent);
   }

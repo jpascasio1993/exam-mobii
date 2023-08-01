@@ -8,8 +8,8 @@ part of 'user_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _UserService implements UserService {
-  _UserService(
+class _UserServiceAPI implements UserServiceAPI {
+  _UserServiceAPI(
     this._dio, {
     this.baseUrl,
   });
