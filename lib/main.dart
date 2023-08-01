@@ -8,7 +8,7 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
 void main() async {
-  final getIt = initInjection(GetIt.instance, environment: Environment.prod);
+  final getIt = initInjection(GetIt.instance, environment: Environment.dev);
   await runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) => runApp(App(

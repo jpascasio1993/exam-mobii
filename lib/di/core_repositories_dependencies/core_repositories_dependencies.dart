@@ -5,7 +5,8 @@ import 'package:exam_mobii/di/core_repositories_dependencies/i_core_repositories
 import 'package:injectable/injectable.dart';
 
 @module
-abstract class CoreRepositoriesDependencies extends ICoreRepositoriesDependencies {
+abstract class CoreRepositoriesDependencies implements ICoreRepositoriesDependencies {
+  @lazySingleton
   @override
   IUserRepository userRepository({required UserService userService}) => UserRepository(userService: userService);
 }

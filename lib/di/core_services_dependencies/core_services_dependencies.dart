@@ -4,7 +4,8 @@ import 'package:exam_mobii/di/core_services_dependencies/i_core_services_depende
 import 'package:injectable/injectable.dart';
 
 @module
-abstract class CoreServicesDependencies extends ICoreServicesDependencies {
+abstract class CoreServicesDependencies implements ICoreServicesDependencies {
+  @lazySingleton
   @override
   UserService userService({required Dio dio}) => UserService(dio);
 }

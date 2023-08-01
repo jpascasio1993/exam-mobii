@@ -21,5 +21,16 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "appName": MessageLookupByLibrary.simpleMessage("Exam Mobii"),
+        "emptyMessage":
+            MessageLookupByLibrary.simpleMessage("It\'s empty in here"),
+        "emptySubMessage": MessageLookupByLibrary.simpleMessage(
+            "When you have some, they\'ll show up here."),
+        "errorMessage": MessageLookupByLibrary.simpleMessage(
+            "Something\'s not quite working."),
+        "errorSubMessage":
+            MessageLookupByLibrary.simpleMessage("Try to refresh."),
+        "retry": MessageLookupByLibrary.simpleMessage("Retry")
+      };
 }

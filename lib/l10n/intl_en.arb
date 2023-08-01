@@ -1,1 +1,29 @@
-{}
+{
+    "@@locale": "en",
+    "appName": "Exam Mobii",
+    "emptyMessage": "It's empty in here",
+    "@emptyMessage": {
+        "type": "text",
+        "placeholders": {}
+    },
+    "emptySubMessage": "When you have some, they'll show up here.",
+      "@emptySubMessage": {
+        "type": "text",
+        "placeholders": {}
+      },
+  "errorMessage": "Something's not quite working.",
+  "@errorMessage": {
+      "type": "text",
+      "placeholders": {}
+    },
+    "errorSubMessage": "Try to refresh.",
+    "@errorSubMessage": {
+        "type": "text",
+        "placeholders": {}
+    },
+    "retry": "Retry",
+    "@retry": {
+         "type": "text",
+         "placeholders": {}
+     }
+}

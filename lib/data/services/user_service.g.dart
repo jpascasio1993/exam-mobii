@@ -19,13 +19,13 @@ class _UserService implements UserService {
   String? baseUrl;
 
   @override
-  Future<List<User>> getUsers() async {
+  Future<HttpResponse<String>> getUsers() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<User>>(Options(
+        await _dio.fetch<String>(_setStreamType<HttpResponse<String>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -37,11 +37,9 @@ class _UserService implements UserService {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = await compute(
-      deserializeUserList,
-      _result.data!.cast<Map<String, dynamic>>(),
-    );
-    return value;
+    final value = _result.data!;
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

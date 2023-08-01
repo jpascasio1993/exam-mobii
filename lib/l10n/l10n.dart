@@ -49,6 +49,66 @@ class AppLocalization {
   static AppLocalization? maybeOf(BuildContext context) {
     return Localizations.of<AppLocalization>(context, AppLocalization);
   }
+
+  /// `Exam Mobii`
+  String get appName {
+    return Intl.message(
+      'Exam Mobii',
+      name: 'appName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It's empty in here`
+  String get emptyMessage {
+    return Intl.message(
+      'It\'s empty in here',
+      name: 'emptyMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When you have some, they'll show up here.`
+  String get emptySubMessage {
+    return Intl.message(
+      'When you have some, they\'ll show up here.',
+      name: 'emptySubMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something's not quite working.`
+  String get errorMessage {
+    return Intl.message(
+      'Something\'s not quite working.',
+      name: 'errorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try to refresh.`
+  String get errorSubMessage {
+    return Intl.message(
+      'Try to refresh.',
+      name: 'errorSubMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message(
+      'Retry',
+      name: 'retry',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
