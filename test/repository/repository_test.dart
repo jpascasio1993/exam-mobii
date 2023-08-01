@@ -21,31 +21,8 @@ void main() {
   late MockIUserService mockUserService;
   late IUserRepository userRepository;
   late List<User> dummyUsers;
-  late String dummyJsonUsersString;
 
   setUp(() async {
-    dummyJsonUsersString = jsonEncode([
-      {
-        "id": "1",
-        "name": "John",
-        "imageUrl": "https://www.alchinlong.com/wp-content/uploads/2015/09/sample-profile.png"
-      },
-      {
-        "id": "1",
-        "name": "John",
-        "imageUrl": "https://www.alchinlong.com/wp-content/uploads/2015/09/sample-profile.png"
-      },
-      {
-        "id": "2",
-        "name": "Chris",
-        "imageUrl": "https://www.alchinlong.com/wp-content/uploads/2015/09/sample-profile.png"
-      },
-      {
-        "id": "3",
-        "name": "Mark",
-        "imageUrl": "https://www.alchinlong.com/wp-content/uploads/2015/09/sample-profile.png"
-      }
-    ]);
     dummyUsers = [
       User.fromJson({
         "id": "1",
