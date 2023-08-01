@@ -1,27 +1,28 @@
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
-import 'package:exam_mobii/data/domain/result/result.dart';
 import 'package:exam_mobii/data/domain/user/user.dart';
 import 'package:exam_mobii/data/repository/user_repository/i_user_repository.dart';
 import 'package:exam_mobii/data/repository/user_repository/user_repository.dart';
 import 'package:exam_mobii/data/services/user_service.dart';
+import 'package:exam_mobii/data/store/user_store/user_store.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:retrofit/dio.dart';
 
-import 'repository_test.mocks.dart';
+import 'user_store_test.mocks.dart';
 
-
-@GenerateMocks([Dio, IUserService,], customMocks: [
-  MockSpec<HttpResponse<String>>()
+@GenerateMocks([
+  IUserService,
+  IUserRepository
 ])
 void main() {
   late MockIUserService mockUserService;
-  late IUserRepository userRepository;
+  late UserStore userStore;
+  late UserRepository userRepository;
   late List<User> dummyUsers;
-  setUp(() async {
+
+  setUp(() {
+    mockUserService = MockIUserService();
+    userRepository = UserRepository(userService: mockUserService);
+    userStore = UserStore(repository: userRepository);
     dummyUsers = [
       User.fromJson({
         "id": "1",
@@ -44,15 +45,13 @@ void main() {
         "imageUrl": "https://www.alchinlong.com/wp-content/uploads/2015/09/sample-profile.png"
       })
     ];
-    mockUserService = MockIUserService();
-    userRepository = UserRepository(userService: mockUserService);
   });
 
-  group('get users via repository', () {
-    test('should retrieve list of users', () async {
+  group('get users via user_store', () {
+    test('should retrieve users', () async {
       when(mockUserService.getUsers()).thenAnswer((_) async => dummyUsers);
-      final res = await userRepository.getUsers();
-      expect(res, Result.success(dummyUsers));
+      await userStore.getUsers();
+      expect(userStore.state.users, dummyUsers);
     });
   });
 }
